@@ -53,7 +53,7 @@ def fetch_openrouter_pricing() -> Dict[str, Tuple[float, float, float]]:
         return {}
 
     try:
-        url = "https://openrouter.ai/api/v1/models"
+        url = "http://localhost:11434/v1"
         resp = requests.get(url, timeout=15)
         resp.raise_for_status()
 
@@ -108,7 +108,7 @@ class LLMClient:
     def __init__(
         self,
         api_key: Optional[str] = None,
-        base_url: str = "https://openrouter.ai/api/v1",
+        base_url: str = "http://localhost:11434/v1",
     ):
         self._api_key = api_key or os.environ.get("OPENROUTER_API_KEY", "")
         self._base_url = base_url
